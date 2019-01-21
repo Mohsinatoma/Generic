@@ -55,9 +55,21 @@ public class CustomList<E> {
 		return aaa;
 	}
 
-	public E update(int i, E a) {
+	public Object Update(E e, int ii) {
+		int flag = 0;
+		for (int h = 0; h < i; h++) {
+			aaa[flag] = new Object();
+			if (h == ii) {
+				aaa[flag++] = e;
 
-		return a;
+			} else {
+				aaa[flag++] = aa[h];
+
+			}
+
+		}
+		return aaa;
+
 	}
 
 	public E search(int i, int j, E a) {

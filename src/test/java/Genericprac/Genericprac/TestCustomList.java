@@ -57,7 +57,24 @@ public class TestCustomList<E> {
 	}
 	
 	
+	@Test
+	public void testupdate() {
 
+		bookid.addall(aa);
+		aa[5] = new Object();
+		aa[5]=bookid.add(new Book(20151405, "River God5", "Wilbar Smith5"));
+		
+		aaa =  (Object[]) bookid.Update((Book) aa[5],2);
+
+        for(int i=0;i<4;i++) {
+        	System.out.println(aaa[i]);
+        }
+		
+
+		
+
+	}
+	
 
 
 }
