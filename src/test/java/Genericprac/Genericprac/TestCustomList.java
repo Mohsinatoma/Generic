@@ -17,10 +17,10 @@ public class TestCustomList<E> {
 	@Before
 	public void setUp() throws Exception {
 
-		aa[0] = bookid.add(new Book(20151401, "River God", "Wilbar Smith"));
-		aa[1] = bookid.add(new Book(20151402, "River God1", "Wilbar Smith1"));
-		aa[2] = bookid.add(new Book(20151403, "River God2", "Wilbar Smith2"));
-		aa[3] = bookid.add(new Book(20151404, "River God3", "Wilbar Smith3"));
+		aa[0] = bookid.add(new Book(20151401, "River God", "Wilbar Smith",23.34f));
+		aa[1] = bookid.add(new Book(20151402, "River God1", "Wilbar Smith1",34.23f));
+		aa[2] = bookid.add(new Book(20151403, "River God2", "Wilbar Smith2",56.567f));
+		aa[3] = bookid.add(new Book(20151404, "River God3", "Wilbar Smith3",45.34f));
 
 	}
 
@@ -28,8 +28,8 @@ public class TestCustomList<E> {
 	public void testAdd() {
 
 		aaa[1] = new Object();
-		aaa[1]=bookid.add(new Book(20151404, "River God3", "Wilbar Smith3"));
-		assertEquals(new Book(20151404, "River God3", "Wilbar Smith3"),aaa[1]);
+		aaa[1]=bookid.add(new Book(20151404, "River God3", "Wilbar Smith3",65.34f));
+		assertEquals(new Book(20151404, "River God3", "Wilbar Smith3",65.34f),aaa[1]);
 
 	}
 
@@ -37,10 +37,13 @@ public class TestCustomList<E> {
 	public void testAddall() {
 
 		aaa = (Object[]) bookid.addall(aa);
-		assertEquals(bookid.add(new Book(20151401, "River God", "Wilbar Smith")), aaa[0]);
-		assertEquals(bookid.add(new Book(20151402, "River God1", "Wilbar Smith1")), aaa[1]);
-		assertEquals(bookid.add(new Book(20151403, "River God2", "Wilbar Smith2")), aaa[2]);
-		assertEquals(bookid.add(new Book(20151404, "River God3", "Wilbar Smith3")), aaa[3]);
+		for(int i=0;i<5;i++) {
+			System.out.println(aaa[i]);
+		}
+		assertEquals(new Book(20151401, "River God", "Wilbar Smith",23.34f), aaa[0]);
+		assertEquals(new Book(20151402, "River God1", "Wilbar Smith1",34.23f), aaa[1]);
+		assertEquals(new Book(20151403, "River God2", "Wilbar Smith2",56.567f), aaa[2]);
+		assertEquals(new Book(20151404, "River God3", "Wilbar Smith3",45.34f), aaa[3]);
 	}
 
 	@Test
@@ -48,29 +51,32 @@ public class TestCustomList<E> {
 
 		bookid.addall(aa);
 		aaa = (Object[]) bookid.delete((Book) aa[2]);
+		
 
-		assertEquals(bookid.add(new Book(20151401, "River God", "Wilbar Smith")), aaa[0]);
-		assertEquals(bookid.add(new Book(20151402, "River God1", "Wilbar Smith1")), aaa[1]);
-		assertEquals(bookid.add(new Book(20151404, "River God3", "Wilbar Smith3")), aaa[2]);
+		assertEquals(new Book(20151401, "River God", "Wilbar Smith",23.34f), aaa[0]);
+		assertEquals(new Book(20151402, "River God1", "Wilbar Smith1",34.23f), aaa[1]);
+		assertEquals(new Book(20151404, "River God3", "Wilbar Smith3",45.34f), aaa[2]);
 		assertEquals(bookid.add(null), aaa[3]);
 
 	}
 	
 	
-	@Test
+  @Test
 	public void testupdate() {
 
 		bookid.addall(aa);
 		aa[5] = new Object();
-		aa[5]=bookid.add(new Book(20151405, "River God5", "Wilbar Smith5"));
+		aa[5]=bookid.add(new Book(20151405, "River God5", "Wilbar Smith5",45.34f));
 		
 		aaa =  (Object[]) bookid.Update((Book) aa[5],2);
-
-        for(int i=0;i<4;i++) {
-        	System.out.println(aaa[i]);
-        }
 		
+	
 
+		assertEquals(new Book(20151401, "River God",  "Wilbar Smith",23.34f),   aaa[0]);
+		assertEquals(new Book(20151402, "River God1", "Wilbar Smith1", 34.23f), aaa[1]);
+		assertEquals(new Book(20151405, "River God5", "Wilbar Smith5", 45.34f), aaa[2]);
+		assertEquals(new Book(20151404, "River God3", "Wilbar Smith3", 45.34f), aaa[3]);
+		
 		
 
 	}
